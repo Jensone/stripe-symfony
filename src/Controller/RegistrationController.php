@@ -72,6 +72,9 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('register');
         }
 
+        // Write a function who display hello world
+
+        
         $user = $userRepository->find($id);
 
         if (null === $user) {
