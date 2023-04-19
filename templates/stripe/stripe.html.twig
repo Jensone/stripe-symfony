@@ -22,14 +22,14 @@
                             <input type='hidden' name='stripeToken' id='stripe-token-id'>                              
                             <label for="card-element" class="mb-5">Formulaire de paiement</label>
                             {# Identité et contact #}
-                            <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Martin" required>
-                            <input type="text" class="form-control mb-3" id="email" name="email" placeholder="allo@haha.com" required>
-                            <input type="number" class="form-control mb-3" id="phone" name="phone" placeholder="612345678" required>
-                            {# Adresse postale #}
+                            <input type="text" class="form-control mb-3" id="name" name="name" value={{ name }} required>
+                            <input type="text" class="form-control mb-3" id="email" name="email" value={{ email }} required>
+                            <input type="number" class="form-control mb-3" id="phone" name="phone" value={{ phone }} required>
+                            {# Adresse postale 
                             <input type="text" class="form-control mb-3" id="line1" name="line1" placeholder="510 Townsend St" required>
                             <input type="number" class="form-control mb-3" id="postal_code" name="postal_code" placeholder="98140" required>
                             <input type="text" class="form-control mb-3" id="city" name="city" placeholder="San Francisco" required>
-                            <input type="text" class="form-control mb-3" id="country" name="country" placeholder="USA" required>
+                            <input type="text" class="form-control mb-3" id="country" name="country" placeholder="USA" required> #}
                             {# Carte de  paiement #}
                             <div id="card-element" class="form-control mb-3">
                             </div>
