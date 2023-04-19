@@ -3,78 +3,6 @@
 {% block title %}S'inscrire{% endblock %}
 
 {% block body %}
-    <section class="mb-5 mb-lg-10">
-        {% for flash_error in app.flashes('verify_email_error') %}
-            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-        {% endfor %}
-
-        <h1 class="fw-bold text-center mb-5">Sign Up</h1>
-
-        {# <div class="row gx-xl-5 justify-content-center">
-            <div class="col-lg-5 mb-4 mb-lg-0">
-                <form>
-                    {{ form_start(registrationForm, {'methods': 'POST'}) }}
-                        <div class="row mb-4">
-                            <div class="col">
-                                <div class="form-outline">
-                                    {{ form_widget(registrationForm.name,
-                                        {
-                                            'attr': {'class': 'form-control'},
-                                            'attr': {'id': 'name'}
-                                        }
-                                    ) }}
-                                    <label class="form-label" for="name">Your name</label>
-
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-outline">
-                                    {{ form_widget(registrationForm.phone,
-                                        {
-                                            'attr': {'class': 'form-control'},
-                                            'attr': {'id': 'phone'}
-                                        }
-                                    ) }}
-                                    <label class="form-label" for="phone">Phone number</label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-outline mb-4">
-                            {{ form_widget(registrationForm.email,
-                                {
-                                    'attr': {'class': 'form-control'},
-                                    'attr': {'id': 'email'}
-                                }
-                            ) }}
-                            <label class="form-label" for="email">Email address</label>
-                        </div>
-                        <div class="form-outline mb-4">
-                            {{ form_widget(registrationForm.plainPassword,
-                                {
-                                    'attr': {'class': 'form-control'},
-                                    'attr': {'id': 'password'}
-                                }
-                            ) }}
-                            <label class="form-label" for="password">Password</label>
-                        </div>
-                        <div class="form-check d-flex justify-content-center mb-4">
-                            {{ form_widget(registrationForm.agreeTerms,
-                                {
-                                    'attr': {'class': 'form-check-input me-2'},
-                                    'attr': {'id': 'checkbox'}
-                                }
-                            ) }}
-                            <label class="form-check-label" for="checkbox">Agree terms</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
-                    {{ form_end(registrationForm) }}
-                <form>
-            </div>
-        </div> #}
-    </section>
-
 <section class="min-vh-100 d-flex align-items-center">
   <div class="container">
     <div class="row justify-content-center">
@@ -87,59 +15,103 @@
             {% endfor %}
             <form method="post" class="mt-4">
                 {{ form_start(registrationForm, {'methods': 'POST'}) }}
-                <div class="form-group mb-4">
-                    <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">
-                        <span class="fas fa-envelope"></span>
-                    </span>
-                    {{ form_widget(registrationForm.email,
-                        {
-                            'attr': {
-                                'class': 'form-control',
-                                'id': 'registration_form_name',
-                                'name': 'registration_form[name]',
-                                'placeholder': 'Agiliteach',
-                                'autocomplete': 'name',
-                                'required': 'required',
-                                'autofocus': 'autofocus',
-                                'type': 'text'
-                            }
-                        }
-                    ) }}
-                    </div>
-                </div>
-                <div class="form-group">
+                {# Champs pour le nom #}
                     <div class="form-group mb-4">
-                    <div class="input-group">
-                        <span class="input-group-text" id="basic-addon2">
-                        <span class="fas fa-unlock-alt"></span>
+                        <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">
+                            <span class="fas fa-user"></span>
                         </span>
-                        {{ form_widget(registrationForm.plainPassword,
-                        {
-                            'attr': {
-                                'class': 'form-control',
-                                'id': 'registration_form_plainPassword',
-                                'name': 'registration_form[plainPassword]',
-                                'placeholder': 'admin123',
-                                'autocomplete': 'name',
-                                'required': 'required',
-                                'autofocus': 'autofocus',
-                                'type': 'password'
+                        {{ form_widget(registrationForm.name,
+                            {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'registration_form_name',
+                                    'name': 'registration_form[name]',
+                                    'placeholder': 'Martin Dupont',
+                                    'autocomplete': 'name',
+                                    'required': 'required',
+                                    'autofocus': 'autofocus',
+                                    'type': 'text'
+                                }
                             }
-                        }
-                    ) }}
+                        ) }}
+                        </div>
                     </div>
-                    {# <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"> #}
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div class="form-check mb-0">
-                        <input class="form-check-input" type="checkbox" name="_remember_me" value="" id="remember">
-                        <label class="form-check-label mb-0" for="remember">Se rappeler de moi</label>
+                {# Champs pour l'adresse email #}
+                    <div class="form-group mb-4">
+                        <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">
+                            <span class="fas fa-envelope"></span>
+                        </span>
+                        {{ form_widget(registrationForm.email,
+                            {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'registration_form_email',
+                                    'name': 'registration_form[email]',
+                                    'placeholder': 'hello@agiliteach.org',
+                                    'autocomplete': 'name',
+                                    'required': 'required',
+                                    'autofocus': 'autofocus',
+                                    'type': 'text'
+                                }
+                            }
+                        ) }}
+                        </div>
                     </div>
+                {# Champs pour le téléphone #}
+                    <div class="form-group mb-4">
+                        <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">
+                            <span class="fas fa-phone"></span>
+                        </span>
+                        {{ form_widget(registrationForm.phone,
+                            {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'registration_form_phone',
+                                    'name': 'registration_form[phone]',
+                                    'placeholder': '699991234',
+                                    'required': 'required',
+                                    'autofocus': 'autofocus',
+                                    'type': 'number'
+                                }
+                            }
+                        ) }}
+                        </div>
                     </div>
-                    <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                {# Champs pour le mot de passe #}
+                    <div class="form-group">
+                        <div class="form-group mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon2">
+                            <span class="fas fa-unlock-alt"></span>
+                            </span>
+                            {{ form_widget(registrationForm.plainPassword,
+                            {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'registration_form_plainPassword',
+                                    'name': 'registration_form[plainPassword]',
+                                    'placeholder': 'admin123',
+                                    'autocomplete': 'name',
+                                    'required': 'required',
+                                    'autofocus': 'autofocus',
+                                    'type': 'password'
+                                }
+                            }
+                        ) }}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                        {# <div class="form-check mb-0 mt-3">
+                            <input class="form-check-input" type="checkbox" name="_remember_me" value="" id="remember">
+                            <label class="form-check-label mb-0" for="remember">Se rappeler de moi</label>
+                        </div> #}
+                        </div>
+                        <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
+                        </div>
                     </div>
-                </div>
                 {{ form_end(registrationForm) }}
             </form>
           </div>
@@ -148,5 +120,4 @@
     </div>
   </div>
 </section>
-    
 {% endblock %}
