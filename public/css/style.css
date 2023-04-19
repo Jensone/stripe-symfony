@@ -23260,8 +23260,8 @@ textarea.form-control-lg {
 }
 
 .headroom--not-top {
-    padding-top: 1rem;
-    padding-bottom: 1rem
+    padding-top: inherit;
+    padding-bottom: inherit
 }
 
 .headroom--not-top.navbar-theme-primary {
@@ -28036,3 +28036,11 @@ blockquote {
 .ct-area,.ct-line {
     pointer-events: none
 }
+
+.bg-svg {
+    background: rgb(239,239,239);
+    background: linear-gradient(45deg, rgba(239,239,239,1) 0%, 
+                rgba(255,255,255,1) 50%, 
+                rgba(236,236,236,1) 100%)
+}
+

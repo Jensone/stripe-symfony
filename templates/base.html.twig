@@ -3,22 +3,63 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>eCommerce • {% block title %}{% endblock %}</title>
+        <title>Agiliteach • {% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# CSS #}
         <link rel="stylesheet" href={{ asset('css/style.css') }}>
         {# Font Awesome 5.15 #}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
-    <body>
-        <header></header>
+    <body class="bg-svg">
+        <header class="header-global">
+            <nav id=="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-dark headroom--not-top headroom--not-bottom">
+                <div class="container position-relative">
+                    <a class="navbar-brand mr-lg-3" href="#">
+                        <img class="navbar-brand-dark" src="https://sosdevtips.b-cdn.net/agiliteach/agiliteach_light.svg" alt="logo">
+                    </a>
+                    <div class="navbar-collapse collapse" id="navbar-default-primary">
+                        <div class="navbar-collapse-header">
+                            <div class="row">
+                                <div class="col-6 collapse-brand">
+                                    <a href="#">
+                                        <img src="../../assets/img/brand/dark.svg" alt="menuimage">
+                                    </a>
+                                </div>
+                                <div class="col-6 collapse-close">
+                                    <i class="fas fa-times" data-toggle="collapse" role="button"
+                                        data-target="#navbar-default-primary" aria-controls="navbar-default-primary"
+                                        aria-expanded="false" aria-label="Toggle navigation"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Formations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href={{ path('stripe') }} class="nav-link">Panier</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="navbar-toggler ml-2" type="button" data-toggle="collapse"
+                            data-target="#navbar-default-primary" aria-controls="navbar-default-primary"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
         <main>
-            <div class="container">
+            <div class="container mt-7">
                 {% block body %}{% endblock %}
             </div>
         </main>
         <footer></footer>
 
         <script src={{ asset('js/main.js') }}></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js" integrity="sha512-uaZ0UXmB7NHxAxQawA8Ow2wWjdsedpRu7nJRSoI2mjnwtY8V5YiCWavoIpo1AhWPMLiW5iEeavmA3JJ2+1idUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.12.0/headroom.min.js" integrity="sha512-9UsrKTYzS9smDm2E58MLs0ACtOki+UC4bBq4iK5wi7lJycwqcaiHxr1bdEsIVoK0l5STEzLUdYyDdFQ5OEjczw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
 </html>

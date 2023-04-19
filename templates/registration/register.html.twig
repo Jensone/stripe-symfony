@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sign Up{% endblock %}
+{% block title %}S'inscrire{% endblock %}
 
 {% block body %}
     <section class="mb-5 mb-lg-10">
@@ -10,7 +10,7 @@
 
         <h1 class="fw-bold text-center mb-5">Sign Up</h1>
 
-        <div class="row gx-xl-5 justify-content-center">
+        {# <div class="row gx-xl-5 justify-content-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
                 <form>
                     {{ form_start(registrationForm, {'methods': 'POST'}) }}
@@ -72,7 +72,81 @@
                     {{ form_end(registrationForm) }}
                 <form>
             </div>
-        </div>
+        </div> #}
     </section>
+
+<section class="min-vh-100 d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="signin-inner my-4 my-lg-0 bg-white shadow-strong border rounded border-gray-300 p-4 p-lg-5 w-100 fmxw-500">
+          <div class="text-center text-md-center mb-4 mt-md-0">
+            <h1 class="mb-5 h3">Créer un compte</h1>
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+            <form method="post" class="mt-4">
+                {{ form_start(registrationForm, {'methods': 'POST'}) }}
+                <div class="form-group mb-4">
+                    <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                        <span class="fas fa-envelope"></span>
+                    </span>
+                    {{ form_widget(registrationForm.email,
+                        {
+                            'attr': {
+                                'class': 'form-control',
+                                'id': 'registration_form_name',
+                                'name': 'registration_form[name]',
+                                'placeholder': 'Agiliteach',
+                                'autocomplete': 'name',
+                                'required': 'required',
+                                'autofocus': 'autofocus',
+                                'type': 'text'
+                            }
+                        }
+                    ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group mb-4">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon2">
+                        <span class="fas fa-unlock-alt"></span>
+                        </span>
+                        {{ form_widget(registrationForm.plainPassword,
+                        {
+                            'attr': {
+                                'class': 'form-control',
+                                'id': 'registration_form_plainPassword',
+                                'name': 'registration_form[plainPassword]',
+                                'placeholder': 'admin123',
+                                'autocomplete': 'name',
+                                'required': 'required',
+                                'autofocus': 'autofocus',
+                                'type': 'password'
+                            }
+                        }
+                    ) }}
+                    </div>
+                    {# <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"> #}
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" name="_remember_me" value="" id="remember">
+                        <label class="form-check-label mb-0" for="remember">Se rappeler de moi</label>
+                    </div>
+                    </div>
+                    <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    </div>
+                </div>
+                {{ form_end(registrationForm) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     
 {% endblock %}
