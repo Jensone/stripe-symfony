@@ -14,20 +14,27 @@ class StripeController extends AbstractController
     public function index(): Response
     {
         return $this->render('stripe/index.html.twig', [
-            'stripe_key' => $_ENV["STRIPE_KEY"],
+            'stripe_key' => $_ENV["STRIPE_KEY"]
         ]);
     }
  
- 
+    // TODO Ajouter les information du client pour le traitement stripe
     #[Route('/stripe/payment', name: 'stripe_payment', methods: ['POST'])]
     public function createCharge(Request $request)
     {
         Stripe\Stripe::setApiKey($_ENV["STRIPE_SECRET"]);
-        Stripe\Charge::create ([
-                "amount" => 5 * 100,
-                "currency" => "usd",
+        Stripe\Charge::create([
+                "amount" => 1990,
+                "currency" => "EUR",
                 "source" => $request->request->get('stripeToken'),
-                "description" => "Binaryboxtuts Payment Test"
+                "line1" => "510 Townsend St",
+                "postal_code" => "98140",
+                "city" => "San Francisco",
+                "state" => "CA",
+                "country" => "US",
+                "email" => "martin@a.com",
+                "name" => "Martin Albert",
+                "phone" => "012222222222",
         ]);
         $this->addFlash(
             'success',
